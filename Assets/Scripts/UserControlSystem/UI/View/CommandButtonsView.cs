@@ -36,6 +36,12 @@ namespace UserControlSystem.UI.View
         }
       
         public void UnblockAllInteractions() => SetInteractible(true);
+        public void BlockInteractions(ICommandExecutor ce)
+        {
+            UnblockAllInteractions();
+            GETButtonGameObjectByType(ce.GetType())
+                .GetComponent<Selectable>().interactable = false;
+        }
 
         private void SetInteractible(bool value)
         {
@@ -58,7 +64,13 @@ namespace UserControlSystem.UI.View
                 button.onClick.AddListener(() => OnClick?.Invoke(currentExecutor));
             }
         }
-
+ 
+        private GameObject GETButtonGameObjectByType(Type executorInstanceType)
+        {
+            return _buttonsByExecutorType
+                .First(type => type.Key.IsAssignableFrom(executorInstanceType))
+                .Value;
+        }
 
         public void Clear()
         {

@@ -7,6 +7,7 @@ using UnityEngine;
 using UserControlSystem.CommandsRealization;
 //using UserControlSystem.CommandsRealization;
 using UserControlSystem.UI.View;
+using Zenject;
 
 namespace UserControlSystem.UI.Presenter
 {
@@ -14,15 +15,18 @@ namespace UserControlSystem.UI.Presenter
     {
         [SerializeField] private CommandButtonsView _view;
         [SerializeField] private SelectableValue _selectable;
-
+        [Inject] private CommandButtonsModel _model;
         private ISelectable _currentSelectable;
-        
+
         private void Start()
         {
+            _view.OnClick += _model.OnCommandButtonClicked;
+            _model.OnCommandSent += _view.UnblockAllInteractions;
+            _model.OnCommandCancel += _view.UnblockAllInteractions;
+            _model.OnCommandAccepted += _view.BlockInteractions;
+
             _selectable.OnSelected += ONSelected;
             ONSelected(_selectable.CurrentValue);
-
-            _view.OnClick += ONButtonClick;
         }
 
         private void ONSelected(ISelectable selectable)
