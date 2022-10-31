@@ -5,13 +5,13 @@ using UserControlSystem;
 public class OutlineSelectorPresenter : MonoBehaviour
 {
     [SerializeField] private SelectableValue _selectableValue;
-
+    
     private OutlineSelector[] _outlineSelectors;
     private ISelectable _currentSelectable;
 
     private void Start()
     {
-        _selectableValue.OnSelected += OnSelected;
+        _selectableValue.OnNewValue += OnSelected;
     }
 
     private void OnSelected(ISelectable selectable)
