@@ -295,6 +295,7 @@ GameObject:
   m_Component:
   - component: {fileID: 298138682}
   - component: {fileID: 298138681}
+  - component: {fileID: 298138683}
   m_Layer: 0
   m_Name: SceneContext
   m_TagString: Untagged
@@ -316,8 +317,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scriptableObjectInstallers: []
   _monoInstallers:
-  - {fileID: 1486844292}
+  - {fileID: 298138683}
   - {fileID: 1528075336}
+  - {fileID: 1486844297}
+  - {fileID: 1950041856873266992}
+  - {fileID: 4545443096653759824}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -350,6 +354,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &298138683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298138680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b99c41e13e5d4bc69af2196d211358b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _orcSprite: {fileID: 21300000, guid: bee560b27125b364f960a57677cc89f8, type: 3}
 --- !u!1001 &411105987
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -402,6 +419,26 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 601484012480614490, guid: 9a39e88bf96768b4aba136856cddf2f2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113040385398092665, guid: 9a39e88bf96768b4aba136856cddf2f2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113040385398092665, guid: 9a39e88bf96768b4aba136856cddf2f2, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113040385398092665, guid: 9a39e88bf96768b4aba136856cddf2f2, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113040385398092665, guid: 9a39e88bf96768b4aba136856cddf2f2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113040385398092665, guid: 9a39e88bf96768b4aba136856cddf2f2, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -553,13 +590,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
-    - target: {fileID: 7240315552003082003, guid: 9a39e88bf96768b4aba136856cddf2f2, type: 3}
+    - target: {fileID: 5616180198964992654, guid: 9a39e88bf96768b4aba136856cddf2f2, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7997531981575243329, guid: 9a39e88bf96768b4aba136856cddf2f2, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 8.203888
+    - target: {fileID: 7240315552003082003, guid: 9a39e88bf96768b4aba136856cddf2f2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8067639841948923579, guid: 9a39e88bf96768b4aba136856cddf2f2, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1089,15 +1126,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd466685092dcbe4dac624355fc9d843, type: 3}
---- !u!114 &1486844292 stripped
+--- !u!114 &1486844297 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 227755229944066459, guid: 9a39e88bf96768b4aba136856cddf2f2, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6655699113055928962, guid: 9a39e88bf96768b4aba136856cddf2f2, type: 3}
   m_PrefabInstance: {fileID: 411105987}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b99c41e13e5d4bc69af2196d211358b8, type: 3}
+  m_Script: {fileID: 11500000, guid: ab61e736851419543ba3127d1bc4be1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1528075335
@@ -1319,11 +1356,33 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6116066217487435056, guid: 185cff468ffb07749bf69dbb1b6b4db6, type: 3}
   m_PrefabInstance: {fileID: 5759911984473176595}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1950041856873266992 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1029207098268694815, guid: 185cff468ffb07749bf69dbb1b6b4db6, type: 3}
+  m_PrefabInstance: {fileID: 5759911984473176595}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 572c963c62da79f48b2d184cafeccd0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4545443096653759820 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8162635956236241593, guid: 20bc17d880a941d478d199abcfef524b, type: 3}
   m_PrefabInstance: {fileID: 5643901274543247349}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4545443096653759824 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7416362859807120273, guid: 20bc17d880a941d478d199abcfef524b, type: 3}
+  m_PrefabInstance: {fileID: 5643901274543247349}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 572c963c62da79f48b2d184cafeccd0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5643901274543247349
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1335,18 +1394,10 @@ PrefabInstance:
       propertyPath: _unitsParent
       value: 
       objectReference: {fileID: 1748817644}
-    - target: {fileID: 7923027785206237403, guid: 20bc17d880a941d478d199abcfef524b, type: 3}
-      propertyPath: outlineColor.b
-      value: 0.21560162
-      objectReference: {fileID: 0}
-    - target: {fileID: 7923027785206237403, guid: 20bc17d880a941d478d199abcfef524b, type: 3}
-      propertyPath: outlineColor.g
-      value: 0.79105216
-      objectReference: {fileID: 0}
-    - target: {fileID: 7923027785206237403, guid: 20bc17d880a941d478d199abcfef524b, type: 3}
-      propertyPath: outlineColor.r
-      value: 0.8018868
-      objectReference: {fileID: 0}
+    - target: {fileID: 6796992331912082794, guid: 20bc17d880a941d478d199abcfef524b, type: 3}
+      propertyPath: _unitsParent
+      value: 
+      objectReference: {fileID: 1748817644}
     - target: {fileID: 8162635956236241593, guid: 20bc17d880a941d478d199abcfef524b, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1452,9 +1503,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: Orc
       objectReference: {fileID: 0}
-    - target: {fileID: 6579174373158205931, guid: 185cff468ffb07749bf69dbb1b6b4db6, type: 3}
-      propertyPath: _icon
-      value: 
-      objectReference: {fileID: 21300000, guid: bee560b27125b364f960a57677cc89f8, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 185cff468ffb07749bf69dbb1b6b4db6, type: 3}

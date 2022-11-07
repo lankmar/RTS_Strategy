@@ -7,7 +7,7 @@ namespace UserControlSystem
     {
         public ICommandExecutor ProcessCommandExecutor(ICommandExecutor commandExecutor, Action<T> callback)
         {
-            var classSpecificExecutor = commandExecutor as CommandExecutorBase<T>;
+            var classSpecificExecutor = commandExecutor as CommandExecutorBase<ICommand>;
             if (classSpecificExecutor != null)
             {
                 ClassSpecificCommandCreation(callback);
@@ -18,5 +18,6 @@ namespace UserControlSystem
         protected abstract void ClassSpecificCommandCreation(Action<T> creationCallback);
 
         public virtual void ProcessCancel() { }
+
     }
 }
