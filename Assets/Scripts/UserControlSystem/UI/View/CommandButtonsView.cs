@@ -10,7 +10,8 @@ namespace UserControlSystem.UI.View
 {
     public sealed class CommandButtonsView : MonoBehaviour
     {
-        public Action<ICommandExecutor> OnClick;
+        public Action<ICommandExecutor, ICommandQueue> OnClick;
+
 
         [SerializeField] private GameObject _attackButton;
         [SerializeField] private GameObject _moveButton;
@@ -24,24 +25,24 @@ namespace UserControlSystem.UI.View
         {
             _buttonsByExecutorType = new Dictionary<Type, GameObject>();
             _buttonsByExecutorType
-                .Add(typeof(CommandExecuterBase<IAttackCommand>), _attackButton);
+                .Add(typeof(CommandExecutorBase<IAttackCommand>), _attackButton);
             _buttonsByExecutorType
-                .Add(typeof(CommandExecuterBase<IMoveCommand>), _moveButton);
+                .Add(typeof(CommandExecutorBase<IMoveCommand>), _moveButton);
             _buttonsByExecutorType
-                .Add(typeof(CommandExecuterBase<IPatrolCommand>), _patrolButton);
+                .Add(typeof(CommandExecutorBase<IPatrolCommand>), _patrolButton);
             _buttonsByExecutorType
-                .Add(typeof(CommandExecuterBase<IStopCommand>), _stopButton);
+                .Add(typeof(CommandExecutorBase<IStopCommand>), _stopButton);
             _buttonsByExecutorType
-                .Add(typeof(CommandExecuterBase<IProduceUnitCommand>), _produceUnitButton);
+                .Add(typeof(CommandExecutorBase<IProduceUnitCommand>), _produceUnitButton);
         }
-      
-        public void UnblockAllInteractions() => SetInteractible(true);
         public void BlockInteractions(ICommandExecutor ce)
         {
             UnblockAllInteractions();
             GETButtonGameObjectByType(ce.GetType())
                 .GetComponent<Selectable>().interactable = false;
         }
+
+        public void UnblockAllInteractions() => SetInteractible(true);
 
         private void SetInteractible(bool value)
         {
@@ -52,19 +53,18 @@ namespace UserControlSystem.UI.View
             _produceUnitButton.GetComponent<Selectable>().interactable = value;
         }
 
-        public void MakeLayout(List<ICommandExecutor> commandExecutors)
-        {
-            for (var index = 0; index < commandExecutors.Count; index++)
+        public void MakeLayout(IEnumerable<ICommandExecutor> commandExecutors, ICommandQueue queue)
+        { 
+            foreach (var currentExecutor in commandExecutors)
             {
-                var currentExecutor = commandExecutors[index];
-                var buttonGameObject =_buttonsByExecutorType.First(type => 
-                type.Key.IsInstanceOfType(currentExecutor)).Value;
+                var buttonGameObject = GETButtonGameObjectByType(currentExecutor.GetType());
                 buttonGameObject.SetActive(true);
                 var button = buttonGameObject.GetComponent<Button>();
-                button.onClick.AddListener(() => OnClick?.Invoke(currentExecutor));
+                button.onClick.AddListener(() => OnClick?.Invoke(currentExecutor, queue));
+
             }
         }
- 
+
         private GameObject GETButtonGameObjectByType(Type executorInstanceType)
         {
             return _buttonsByExecutorType

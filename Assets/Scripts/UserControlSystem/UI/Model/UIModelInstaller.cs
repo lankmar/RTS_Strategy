@@ -1,19 +1,15 @@
 ﻿using Abstractions.Commands.CommandsInterfaces;
 using UnityEngine;
-using Utils;
+using UserControlSystem.UI.Model;
 using Zenject;
 
 namespace UserControlSystem
 {
     public sealed class UIModelInstaller : MonoInstaller
     {
-        [SerializeField] private AssetsContext _legacyContext;
-        [SerializeField] private Vector3Value _vector3Value;
+        [SerializeField] private Sprite _orcSprite;
         public override void InstallBindings()
         {
-            Container.Bind<AssetsContext>().FromInstance(_legacyContext);
-            Container.Bind<Vector3Value>().FromInstance(_vector3Value);
-
             Container.Bind<CommandCreatorBase<IProduceUnitCommand>>()
                 .To<ProduceUnitCommandCommandCreator>().AsTransient();
             Container.Bind<CommandCreatorBase<IAttackCommand>>()
@@ -25,7 +21,13 @@ namespace UserControlSystem
             Container.Bind<CommandCreatorBase<IStopCommand>>()
                 .To<StopCommandCommandCreator>().AsTransient();
 
-            Container.Bind<CommandButtonsModel>().AsSingle();
+            Container.Bind<CommandButtonsModel>().AsTransient();
+
+            Container.Bind<float>().WithId("Orc").FromInstance(5f);
+            Container.Bind<string>().WithId("Orc").FromInstance("Orc");
+            Container.Bind<Sprite>().WithId("Orc").FromInstance(_orcSprite);
+
+            Container.Bind<BottomCenterModel>().AsTransient();
         }
     }
 }
